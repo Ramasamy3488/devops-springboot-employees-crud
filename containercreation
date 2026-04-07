@@ -1,0 +1,26 @@
+sudo -i
+yum install git -y
+
+docker network create my-network
+
+docker run -d \
+  --name mysql-container \
+  --network my-network \
+  -e MYSQL_ROOT_PASSWORD=Rajan@123 \
+  -e MYSQL_DATABASE=employee_db \
+  mysql:8
+
+
+git clone https://github.com/Ramasamy3488/devops-springboot-employees-crud.git
+
+cd devops-springboot-employees-crud
+
+docker build -t springboot-employees-app:v1 .
+
+
+
+docker run -d \
+--name employeescon \
+--network my-network \
+-p 8080:8080 \
+springboot-employees-app:v1
