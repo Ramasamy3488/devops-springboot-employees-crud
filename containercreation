@@ -2,7 +2,6 @@ sudo -i
 yum install git -y
 
 docker network create my-network
-docker volume create mysql-data
 
 
 docker run -d \
