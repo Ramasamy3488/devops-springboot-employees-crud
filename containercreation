@@ -4,6 +4,23 @@ yum install git -y
 docker network create my-network
 docker volume create mysql-data
 
+
+docker run -d \
+  --name mysql-container \
+  --network my-network \
+  --restart=unless-stopped \
+  -e MYSQL_ROOT_PASSWORD=Rajan@123 \
+  -e MYSQL_DATABASE=employee_db \
+  -p 3306:3306 \
+  -v mysql-data:/var/lib/mysql \
+  mysql:8
+
+-------------
+
+docker run -d   --name mysql-container --restart=unless-stopped  --network my-network -e MYSQL_ROOT_PASSWORD=Rajan@123 -e MYSQL_DATABASE=mydb -v mysql-data:/var/lib/mysql -p 8082:8080 mysql:8
+
+--------------
+
 docker run -d \
   --name mysql-container \
   --network my-network \
