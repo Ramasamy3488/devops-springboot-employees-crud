@@ -25,9 +25,6 @@ docker build -t springboot-employees-app:v1 .
 
 --------------------------------
 
-docker run -d   --name mysql-container --restart=unless-stopped  --network my-network -e MYSQL_ROOT_PASSWORD=Rajan@123 -e MYSQL_DATABASE=mydb -v mysql-data:/var/lib/mysql -p 8081:8080 mysql:8
-
---------------
 
 docker run -d \
   --name mysql-container \
